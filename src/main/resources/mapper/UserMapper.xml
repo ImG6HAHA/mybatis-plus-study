@@ -12,4 +12,36 @@
         select *
         from t_user where age>#{age}
     </select>
+    <insert id="insertSelective">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="age != null">age,</if>
+            <if test="email != null">email,</if>
+            <if test="isDeleted != null">is_deleted,</if>
+            <if test="sex != null">sex,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id,jdbcType=NUMERIC},</if>
+            <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+            <if test="age != null">#{age,jdbcType=NUMERIC},</if>
+            <if test="email != null">#{email,jdbcType=VARCHAR},</if>
+            <if test="isDeleted != null">#{isDeleted,jdbcType=NUMERIC},</if>
+            <if test="sex != null">#{sex},</if>
+        </trim>
+    </insert>
+    <delete id="deleteByIdAndEmail">
+        delete
+        from user
+        where id = #{id,jdbcType=NUMERIC}
+          AND email = #{email,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateAgeAndNameById">
+        update user
+        set age  = #{age,jdbcType=NUMERIC},
+            name = #{name,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=NUMERIC}
+    </update>
 </mapper>

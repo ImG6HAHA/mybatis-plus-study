@@ -17,7 +17,22 @@
         <java.version>1.8</java.version>
     </properties>
 
+
+
+    <!--代码生成器-->
     <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <!--引擎模板-->
+        <dependency>
+        <groupId>org.freemarker</groupId>
+        <artifactId>freemarker</artifactId>
+        <version>2.3.31</version>
+        </dependency>
+
     <!--mybatis-plus启动器-->
     <dependency>
         <groupId>com.baomidou</groupId>
@@ -39,6 +54,13 @@
         <scope>runtime</scope>
     </dependency>
 
+        <!--多数据源-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -59,5 +81,7 @@
             </plugin>
         </plugins>
     </build>
+
+
 
 </project>
